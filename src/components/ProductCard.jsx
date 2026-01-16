@@ -36,6 +36,10 @@ const ProductCard = ({ product }) => {
                     {product.title}
                 </h3>
 
+                <p className="text-gray-600 text-xs line-clamp-2 mb-3 flex-grow">
+                    {product.description}
+                </p>
+
                 <div className="flex items-center justify-between mt-auto pt-3">
                     <span className="text-lg font-black text-gray-900">
                         ${product.price.toFixed(2)}
@@ -43,8 +47,8 @@ const ProductCard = ({ product }) => {
                     <button
                         onClick={handleButtonClick}
                         className={`px-4 py-2 rounded-lg font-bold text-xs transition-all-smooth transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg ${isInCart
-                                ? 'bg-[#10B981] text-white'
-                                : 'bg-[#FDE047] text-gray-900 hover:bg-[#FCD34D]'
+                            ? 'bg-[#10B981] text-white'
+                            : 'bg-[#FDE047] text-gray-900 hover:bg-[#FCD34D]'
                             }`}
                     >
                         {isInCart ? '✓ Added' : '+ Add'}
