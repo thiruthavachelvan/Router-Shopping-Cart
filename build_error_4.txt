@@ -1,0 +1,15 @@
+
+> router-shopping-cart@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 5 modules transformed.
+[31m✗[39m Build failed in 92ms
+[31merror during build:
+[31m[@tailwindcss/vite:generate:build] Cannot convert undefined or null to object[31m
+file: [36mE:/HTML Codes/Tasks/Task 6/Router-Shopping-Cart/src/index.css[31m
+    at B.generate (file:///E:/HTML%20Codes/Tasks/Task%206/Router-Shopping-Cart/node_modules/@tailwindcss/vite/dist/index.mjs:1:5598)
+    at async Object.transform (file:///E:/HTML%20Codes/Tasks/Task%206/Router-Shopping-Cart/node_modules/@tailwindcss/vite/dist/index.mjs:1:3630)
+    at async transform (file:///E:/HTML%20Codes/Tasks/Task%206/Router-Shopping-Cart/node_modules/rollup/dist/es/shared/node-entry.js:21283:16)
+    at async ModuleLoader.addModuleSource (file:///E:/HTML%20Codes/Tasks/Task%206/Router-Shopping-Cart/node_modules/rollup/dist/es/shared/node-entry.js:21497:36)[39m
