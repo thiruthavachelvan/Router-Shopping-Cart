@@ -4,42 +4,50 @@ const ProductCard = ({ product }) => {
     const { cart, addToCart, removeFromCart } = useCart();
     const isInCart = cart.some((item) => item.id === product.id);
 
+    const handleButtonClick = (e) => {
+        e.currentTarget.classList.add('animate-scale-in');
+        setTimeout(() => {
+            e.currentTarget.classList.remove('animate-scale-in');
+        }, 400);
+
+        if (isInCart) {
+            removeFromCart(product.id);
+        } else {
+            addToCart(product);
+        }
+    };
+
     return (
-        <div className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full transform hover:-translate-y-1">
-            <div className="relative pt-[100%] overflow-hidden bg-gray-50 p-6">
+        <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all-smooth overflow-hidden border border-gray-100 flex flex-col h-full transform hover:-translate-y-1 animate-fade-in-up">
+            <div className="relative pt-[75%] overflow-hidden bg-gray-50 p-3">
                 <img
                     src={product.image}
                     alt={product.title}
-                    className="absolute inset-0 w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500 p-4"
+                    className="absolute inset-0 w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500 p-3"
                 />
-                {/* Helper overlay for aesthetics */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
             </div>
 
-            <div className="p-5 flex flex-col flex-grow">
-                <h3 className="font-semibold text-gray-800 text-lg mb-1 line-clamp-1" title={product.title}>
-                    {product.title}
-                </h3>
-                <p className="text-sm text-gray-500 mb-3 capitalize">{product.category}</p>
-
-                <div className="flex-grow">
-                    <p className="text-gray-600 text-sm line-clamp-2 mb-4">
-                        {product.description}
-                    </p>
+            <div className="p-4 flex flex-col flex-grow">
+                <div className="mb-2 px-2 py-1 bg-blue-50 text-[#0EA5E9] text-xs font-semibold rounded uppercase w-fit">
+                    {product.category}
                 </div>
 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
-                    <span className="text-xl font-bold text-gray-900">
+                <h3 className="font-bold text-gray-900 text-sm mb-1 line-clamp-2 group-hover:text-[#0EA5E9] transition-colors" title={product.title}>
+                    {product.title}
+                </h3>
+
+                <div className="flex items-center justify-between mt-auto pt-3">
+                    <span className="text-lg font-black text-gray-900">
                         ${product.price.toFixed(2)}
                     </span>
                     <button
-                        onClick={() => isInCart ? removeFromCart(product.id) : addToCart(product)}
-                        className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 transform active:scale-95 ${isInCart
-                                ? 'bg-red-50 text-red-600 hover:bg-red-100/80 border border-red-200'
-                                : 'bg-gray-900 text-white hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20'
+                        onClick={handleButtonClick}
+                        className={`px-4 py-2 rounded-lg font-bold text-xs transition-all-smooth transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg ${isInCart
+                                ? 'bg-[#10B981] text-white'
+                                : 'bg-[#FDE047] text-gray-900 hover:bg-[#FCD34D]'
                             }`}
                     >
-                        {isInCart ? 'Remove' : 'Add to Cart'}
+                        {isInCart ? '✓ Added' : '+ Add'}
                     </button>
                 </div>
             </div>
