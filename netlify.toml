@@ -1,0 +1,9 @@
+# Netlify Configuration
+[build]
+  command = "npm install --legacy-peer-deps && npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
